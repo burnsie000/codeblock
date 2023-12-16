@@ -7,6 +7,7 @@ const FAQ = dynamic(() => import('@/components/FAQ'))
 import Script from 'next/script'
 import { cookies } from 'next/headers'
 import { createClient } from '@/utils/supabase/server'
+import toast, { Toaster } from 'react-hot-toast'
 
 
 
@@ -39,6 +40,10 @@ export default async function Home() {
   const supabase = createClient(cookieStore)
   let { data: { publicUrl } } = await supabase.storage.from('webphotos').getPublicUrl('hero.png')
   const hero = publicUrl
+  const { data: {session}} = await supabase.auth.getSession()
+  if (session) {
+    toast.success('Welcome Back!')
+  }
 
   const getBenefitOne = async () => {
     "use server"
@@ -93,6 +98,7 @@ export default async function Home() {
       backgroundImage={hero}
       paragraph='At CodeBlock, a leading website development company in Toronto, we understand the importance of fast websites. Our custom web development services are designed to boost your Google search ranking by enhancing your sites speed, making your web page visitors experience smoother and more enjoyable.'
       />
+      <Toaster />
       <What heading='Our Custom Web Development Helps Your Business Stand Out' subheading='If you have a cookie cutter website from a website builder like Squarespace, Wordpress, Wix, and others, you could be missing out on many new customers...' paragraph='If your current website, built with a website builder like Squarespace, WordPress, Wix, or others, is slow, you are likely losing potential new customers. Slow websites frustrate web browsers, leading them to abandon your site. This is where CodeBlock, a premier web development company in Toronto, steps in.
 
         When you hire CodeBlock to develop your website, we  use the latest frameworks and technology such as ReactJS, NextJS, and ExpressJS to optimize your code and to boost your page loading speeds for your website. With our blazing fast websites, you will certainly see a massive difference in your sites Google Search rankings and you will absolutely convert more of your web page visitors into paying customers.' image={adobe}
