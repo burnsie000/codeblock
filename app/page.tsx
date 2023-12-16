@@ -2,7 +2,6 @@ import dynamic from 'next/dynamic'
 const Hero = dynamic(() => import('@/components/Hero'))
 const What = dynamic(() => import('@/components/What'))
 const How = dynamic(() => import('@/components/How'))
-const PastWork = dynamic (() => import('@/components/PastWork'))
 const Features = dynamic(() => import('@/components/Features'))
 const FAQ = dynamic(() => import('@/components/FAQ'))
 import Script from 'next/script'

@@ -5,6 +5,7 @@ import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 const Image = dynamic(() => import('next/image'))
 const Script = dynamic(() => import('next/script'))
+import toast, { Toaster } from 'react-hot-toast'
 
 
 
@@ -33,7 +34,7 @@ export default async function Login({
     })
 
     if (error) {
-      return redirect('/login?message=Could not authenticate user')
+      throw new Error(error.message)
     }
 
     return redirect('/')
@@ -57,12 +58,12 @@ export default async function Login({
     })
 
     if (error) {
-      return redirect('/login?message=Could not authenticate user')
+      throw new Error(error.message)
     }
 
     return redirect('/login?message=Check email to continue sign in process')
   }
-
+  const notify = () => toast(searchParams?.message)
   return (
     <div className="flex-1 flex flex-col h-screen items-center relative mx-auto w-full px-8 justify-center py-[8rem] gap-2">
       
@@ -102,13 +103,12 @@ export default async function Login({
         <button
           formAction={signUp}
           className="border border-primary rounded-3xl px-4 py-2 text-foreground mb-2"
+          onClick={notify}
         >
           Sign Up
         </button>
         {searchParams?.message && (
-          <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
-            {searchParams.message}
-          </p>
+          <Toaster />
         )}
       </form>
     </div>
