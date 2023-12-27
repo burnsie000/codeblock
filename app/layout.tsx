@@ -12,8 +12,6 @@ import Loading from './loading'
 import { cookies } from 'next/headers'
 import { createClient } from '@/utils/supabase/server'
 
-export const runtime = 'edge'
-
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -21,15 +19,42 @@ export const metadata: Metadata = {
   title: 'CodeBlock Toronto: Next.js Web Development Experts',
   description: "Toronto's top Next.js web development by CodeBlock. We offer unique, fast, SEO-optimized web design and development services.",
   openGraph: {
-    images: ['/opengraph-image.png', '/twitter-image.png'],
-    url: '/',
-    description: 'TheCodeBlock.dev',
-    title: 'CodeBlock',
+    images: [
+      {
+      url: '/twitter-image.png',
+      height: 600,
+      width: 1200,
+      alt: 'CodeBlock Toronto: Next.js Web Development Experts',
+      },
+    ],
+    url: 'https://www.thecodeblock.dev/',
+    description: "Toronto's top Next.js web development by CodeBlock. We offer unique, fast, SEO-optimized web design and development services.",
+    title: 'TheCodeBlock.dev',
+    siteName: 'TheCodeBlock.dev',
     type: 'website',
+    locale: 'en_CA',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  twitter: {
+    title: "CodeBlock",
+    card: "summary_large_image",
+  },
+  icons: {
+    shortcut: "/favicon.ico",
   },
   verification: {
     google: `${process.env.NEXT_PUBLIC_GOOGLE_SC}` 
-  }
+  },
 }
 
 export default async function RootLayout({

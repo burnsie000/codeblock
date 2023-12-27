@@ -1,42 +1,44 @@
+
 import dynamic from 'next/dynamic'
-const Link = dynamic(() => import('next/link'))
+import Link from 'next/link'
 import { headers, cookies } from 'next/headers'
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 const Image = dynamic(() => import('next/image'))
-const Script = dynamic(() => import('next/script'))
 import toast, { Toaster } from 'react-hot-toast'
 
-
+export const runtime = 'nodejs'
 
 export default async function Login({
   searchParams,
 }: {
   searchParams: { message: string }
 }) {
-    const cookieStore = cookies()
-    const supabase = await createClient(cookieStore)
-    const { data: { session }} = await supabase.auth.getSession()
-    if (session) {
-        redirect('/')
-    }
+  const cookieStore = cookies()
+  const supabase = createClient(cookieStore)
+  const { data } = await supabase.auth.getSession()
+
+  if (data.session) {
+    return redirect('/')
+  }
+  const notify = async () => toast(searchParams?.message)
   const signIn = async (formData: FormData) => {
     'use server'
+
     const email = formData.get('email') as string
     const password = formData.get('password') as string
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
-    const turnstileRes = formData.get('cf-turnstile-response') as string
-    console.log(turnstileRes)
+
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     })
 
     if (error) {
-      throw new Error(error.message)
+      return redirect('/login?message=Could not authenticate user')
     }
-
+    notify()
     return redirect('/')
   }
 
@@ -56,16 +58,16 @@ export default async function Login({
         emailRedirectTo: `${origin}/auth/callback`,
       },
     })
-
     if (error) {
-      throw new Error(error.message)
+      return redirect('/login?message=Could not authenticate user')
     }
-
-    return redirect('/login?message=Check email to continue sign in process')
+    if (!error) {
+      return redirect('/login?message=Check email to continue sign in process')
+    }
   }
-  const notify = () => toast(searchParams?.message)
+  
   return (
-    <div className="flex-1 flex flex-col h-screen items-center relative mx-auto w-full px-8 justify-center py-[8rem] gap-2">
+    <div className="flex-1 md: top-10 flex flex-col h-screen items-center relative mx-auto w-full px-8 justify-center py-[8rem] gap-2">
       
         <Link
         href="/"
@@ -103,7 +105,6 @@ export default async function Login({
         <button
           formAction={signUp}
           className="border border-primary rounded-3xl px-4 py-2 text-foreground mb-2"
-          onClick={notify}
         >
           Sign Up
         </button>

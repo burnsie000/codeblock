@@ -8,7 +8,7 @@ const CenterText = dynamic(() => import('@/components/CenterText'))
 import { cookies } from 'next/headers'
 import { createClient } from '@/utils/supabase/server'
 
-
+export const runtime = 'edge'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

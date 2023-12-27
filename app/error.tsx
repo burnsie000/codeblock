@@ -1,6 +1,7 @@
 'use client' // Error components must be Client Components
  
 import { useEffect } from 'react'
+
  
 export default function Error({
   error,
@@ -31,7 +32,7 @@ export default function Error({
             </g>
         </svg>
         {error.message && (
-            <h2 className='md:text-5xl text-2xl text-center items-center justify-center relative flex mx-auto text-primary font-extrabold'>Something went wrong!</h2>
+            <h2 className='md:text-5xl text-2xl text-center items-center justify-center relative flex mx-auto text-primary font-extrabold'>{error.message}</h2>
         )}
         {!error.message && (
             <h2 className='md:text-5xl text-2xl text-center items-center justify-center relative flex mx-auto text-primary font-extrabold'>Something went wrong!</h2>

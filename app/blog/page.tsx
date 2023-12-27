@@ -4,7 +4,7 @@ import { cookies } from 'next/headers'
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 
-
+export const runtime = 'edge'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
