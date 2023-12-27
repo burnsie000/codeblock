@@ -7,7 +7,7 @@ import { redirect } from 'next/navigation'
 const Image = dynamic(() => import('next/image'))
 import toast, { Toaster } from 'react-hot-toast'
 
-export const runtime = 'nodejs'
+export const runtime = 'edge'
 
 export default async function Login({
   searchParams,
@@ -21,7 +21,7 @@ export default async function Login({
   if (data.session) {
     return redirect('/')
   }
-  const notify = async () => toast(searchParams?.message)
+  
   const signIn = async (formData: FormData) => {
     'use server'
 
@@ -38,7 +38,6 @@ export default async function Login({
     if (error) {
       return redirect('/login?message=Could not authenticate user')
     }
-    notify()
     return redirect('/')
   }
 
@@ -109,7 +108,7 @@ export default async function Login({
           Sign Up
         </button>
         {searchParams?.message && (
-          <Toaster />
+          <p className="text-red-500">{searchParams.message}</p>
         )}
       </form>
     </div>
