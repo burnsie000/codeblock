@@ -41,8 +41,9 @@ export default async function Home() {
   let { data: { publicUrl } } = await supabase.storage.from('webphotos').getPublicUrl('hero.png')
   const hero = publicUrl
   const { data: {session}} = await supabase.auth.getSession()
+  const notify = async () => toast('You have been signed in.')
   if (session) {
-    toast.success('Welcome Back!')
+    notify()
   }
 
   const getBenefitOne = async () => {
@@ -92,13 +93,13 @@ export default async function Home() {
 
   return (
     <main className="flex relative w-full z-0 flex-col">
+      <Toaster />
       <Hero heading='Reach More Customers With A Blazing Fast Website'
       subheading='Custom Websites Built With The Latest Frameworks'
       cta='Schedule a Call Today!'
       backgroundImage={hero}
       paragraph='At CodeBlock, a leading website development company in Toronto, we understand the importance of fast websites. Our custom web development services are designed to boost your Google search ranking by enhancing your sites speed, making your web page visitors experience smoother and more enjoyable.'
       />
-      <Toaster toastOptions={{className:'bg-[rgb(20,20,20)] z-50 rounded-3xl border-2 border-primary border-solid text-primary font-semibold items-start top-[5px] justify-center mx-auto flex'}} />
       <What heading='Our Custom Web Development Helps Your Business Stand Out' subheading='If you have a cookie cutter website from a website builder like Squarespace, Wordpress, Wix, and others, you could be missing out on many new customers...' paragraph='If your current website, built with a website builder like Squarespace, WordPress, Wix, or others, is slow, you are likely losing potential new customers. Slow websites frustrate web browsers, leading them to abandon your site. This is where CodeBlock, a premier web development company in Toronto, steps in.
 
         When you hire CodeBlock to develop your website, we  use the latest frameworks and technology such as ReactJS, NextJS, and ExpressJS to optimize your code and to boost your page loading speeds for your website. With our blazing fast websites, you will certainly see a massive difference in your sites Google Search rankings and you will absolutely convert more of your web page visitors into paying customers.' image={adobe}
