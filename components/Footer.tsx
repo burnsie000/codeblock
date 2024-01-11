@@ -51,12 +51,12 @@ const Footer: React.FC<FooterProps> = ({logo}) => {
                 <Link rel='dns-prefetch' prefetch={true} href='/blog' aria-label='Blog' className='underline text-white text-md text-center flex relative mx-auto justify-center font-regular items-center'>
                     Blog
                 </Link>
-                <div className='flex relative w-full md:w-1/3 flex-row mx-auto items-center justify-center'>
-                    <Link passHref={true} aria-label='facebook' rel='noopener noreferrer nofollow' prefetch={true} href='www.facebook.com/codeblock' className='relative flex mx-auto justify-center items-center fill-primary'><FacebookRoundedIcon className='relative flex mx-auto justify-center items-center fill-primary' /></Link>
-                    <Link passHref={true} aria-label='youtube' rel='noopener noreferrer nofollow' prefetch={true} href='www.youtube.com/codeblock' className='relative flex mx-auto justify-center items-center fill-primary'><YouTubeIcon className='relative flex mx-auto justify-center items-center fill-primary' /></Link>
-                    <Link passHref={true} aria-label='instagram' rel='noopener noreferrer nofollow' prefetch={true} href='www.instagram.com/codeblock' className='relative flex mx-auto justify-center items-center fill-primary'><InstagramIcon className='relative flex mx-auto justify-center items-center fill-primary' /></Link>
-                    <Link passHref={true} aria-label='twitter' rel='noopener noreferrer nofollow' prefetch={true} href='www.twitter.com/codeblock' className='relative flex mx-auto justify-center items-center fill-primary'><TwitterIcon className='relative flex mx-auto justify-center items-center fill-primary' /></Link>
-                    <Link passHref={true} aria-label='linkedin' rel='noopener noreferrer nofollow' prefetch={true} href='www.linkedin.com/company/codeblock' className='relative flex mx-auto justify-center items-center fill-primary'><LinkedInIcon className='relative flex mx-auto justify-center items-center fill-primary' /></Link>
+                <div className='flex relative w-full md:w-1/3 flex-row mx-auto my-[2rem] items-center justify-center'>
+                    <Link passHref={true} aria-label='facebook' rel='noopener noreferrer nofollow' prefetch={true} href='www.facebook.com/codeblock' className='relative flex mx-auto justify-center my-[2rem] items-center fill-primary'><FacebookRoundedIcon className='relative flex mx-auto my-[2rem] justify-center items-center fill-primary' /></Link>
+                    <Link passHref={true} aria-label='youtube' rel='noopener noreferrer nofollow' prefetch={true} href='www.youtube.com/codeblock' className='relative flex mx-auto justify-center my-[2rem] items-center fill-primary'><YouTubeIcon className='relative flex mx-auto justify-center my-[2rem] items-center fill-primary' /></Link>
+                    <Link passHref={true} aria-label='instagram' rel='noopener noreferrer nofollow' prefetch={true} href='www.instagram.com/codeblock' className='relative flex mx-auto justify-center my-[2rem] items-center fill-primary'><InstagramIcon className='relative flex mx-auto justify-center my-[2rem] items-center fill-primary' /></Link>
+                    <Link passHref={true} aria-label='twitter' rel='noopener noreferrer nofollow' prefetch={true} href='www.twitter.com/codeblock' className='relative flex mx-auto justify-center my-[2rem] items-center fill-primary'><TwitterIcon className='relative flex mx-auto justify-center items-center my-[2rem] fill-primary' /></Link>
+                    <Link passHref={true} aria-label='linkedin' rel='noopener noreferrer nofollow' prefetch={true} href='www.linkedin.com/company/codeblock' className='relative flex mx-auto justify-center my-[2rem] items-center fill-primary'><LinkedInIcon className='relative flex mx-auto justify-center my-[2rem] items-center fill-primary' /></Link>
                 </div>
             </div>
         </div>
@@ -65,13 +65,13 @@ const Footer: React.FC<FooterProps> = ({logo}) => {
                     <h2 className='flex-relative mx-auto justify-center items-center text-center text-primary text-3xl my-2 font-extrabold'>
                         Get in Touch!
                     </h2>
-                    <div className='flex flex-col md:flex-row w-full justify-between items-center'>
-                        <div className='flex flex-col w-full md:w-1/4 h-full relative space-y-2 items-center justify-center text-center mx-auto'>
+                    <div className='flex relative space-y-[10px] flex-col md:flex-row w-full justify-between items-center'>
+                        <div className='flex flex-col w-full md:w-1/4 h-full relative space-y-[10px] items-center justify-center text-center mx-auto'>
                             <p className='text-center items-center justify-center mx-auto relative flex text-primary font-semibold text-lg'>
                                 Email
                             </p>
-                            <p className='flex relative items-center justify-center text-center text-sm text-white font-regular mx-auto'>braedenvallis@thecodeblock.dev</p>
-                            <p className='flex relative items-center justify-center text-center text-sm text-white font-regular mx-auto'>bradyburns@thecodeblock.dev</p>
+                            <p className='flex relative items-center justify-center text-center text-sm text-white font-regular mt-[10px] mx-auto'>braedenvallis@thecodeblock.dev</p>
+                            <p className='flex relative items-center justify-center text-center text-sm text-white font-regular my-[10px] mx-auto'>bradyburns@thecodeblock.dev</p>
                         </div>
                         <div className='flex flex-col w-full md:w-1/3 h-full space-y-2 relative items-center text-center justify-center mx-auto'>
                             <p className='text-center items-center justify-center mx-auto relative flex text-primary font-semibold text-lg'>
